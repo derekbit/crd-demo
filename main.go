@@ -32,6 +32,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
 	pizzastorev1alpha1 "github.com/derekbit/crd-demo/api/v1alpha1"
+	pizzastorev1beta1 "github.com/derekbit/crd-demo/api/v1beta1"
 	"github.com/derekbit/crd-demo/controllers"
 	//+kubebuilder:scaffold:imports
 )
@@ -45,6 +46,7 @@ func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
 
 	utilruntime.Must(pizzastorev1alpha1.AddToScheme(scheme))
+	utilruntime.Must(pizzastorev1beta1.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
 

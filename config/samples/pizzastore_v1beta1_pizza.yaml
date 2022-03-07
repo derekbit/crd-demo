@@ -1,0 +1,6 @@
+apiVersion: pizzastore.dereksu.dev/v1beta1
+kind: Pizza
+metadata:
+  name: pizza-sample
+spec:
+  # TODO(user): Add fields here
