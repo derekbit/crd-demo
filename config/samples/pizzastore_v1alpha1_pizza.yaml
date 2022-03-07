@@ -3,4 +3,8 @@ kind: Pizza
 metadata:
   name: pizza-sample
 spec:
-  # TODO(user): Add fields here
+  price: 100
+  size: large
+  toppings:
+  - mozzarella
+  - tomato
