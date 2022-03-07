@@ -1,0 +1,16 @@
+domain: dereksu.dev
+layout:
+- go.kubebuilder.io/v3
+projectName: crd-demo
+repo: github.com/derekbit/crd-demo
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: dereksu.dev
+  group: pizzastore
+  kind: Pizza
+  path: github.com/derekbit/crd-demo/api/v1alpha1
+  version: v1alpha1
+version: "3"
