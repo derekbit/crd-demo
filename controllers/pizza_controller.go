@@ -19,6 +19,7 @@ package controllers
 import (
 	"context"
 
+	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -49,7 +50,22 @@ type PizzaReconciler struct {
 func (r *PizzaReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
-	// TODO(user): your logic here
+	pizza := &pizzastorev1alpha1.Pizza{}
+	if err := r.Get(ctx, req.NamespacedName, pizza); err != nil {
+		if errors.IsNotFound(err) {
+			return ctrl.Result{}, nil
+		}
+
+		return ctrl.Result{}, err
+	}
+
+	if pizza.Status.Price != pizza.Spec.Price {
+		pizza.Status.Price = pizza.Spec.Price
+		pizza.Status.PriceRise += 1
+		if err := r.Status().Update(ctx, pizza); err != nil {
+			return ctrl.Result{}, err
+		}
+	}
 
 	return ctrl.Result{}, nil
 }

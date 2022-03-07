@@ -20,22 +20,17 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
 // PizzaSpec defines the desired state of Pizza
 type PizzaSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of Pizza. Edit pizza_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Size     string   `json:"size"`
+	Price    int      `json:"price"`
+	Toppings []string `json:"toppings"`
 }
 
 // PizzaStatus defines the observed state of Pizza
 type PizzaStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	Price     int `json:"price"`
+	PriceRise int `json:"price_rise"`
 }
 
 //+kubebuilder:object:root=true
